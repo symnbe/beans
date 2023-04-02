@@ -21,7 +21,6 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
-// $(document).on('turbolinks:load', function() {
   $(document).ready(function () {
     $(".openbtn").click(function () { //ボタンがクリックされたら
     	$(this).toggleClass('active'); //ボタン自身に activeクラスを付与し
