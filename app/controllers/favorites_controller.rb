@@ -4,7 +4,6 @@ class FavoritesController < ApplicationController
     @bean = Bean.find(params[:bean_id])
     favorite = current_user.favorites.new(bean_id: @bean.id)
     favorite.save
-    # redirect_to bean_path(bean)
   end
 
   def destroy
