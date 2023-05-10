@@ -1,10 +1,14 @@
-<div class="row add-contents">
+<div class="row add-contents mt-5">
   <span class="search-bar-container btn btn-lg btn-outline-light border border-secondary mb-5 ml-auto">
     <a href="#" id="search-button"><i class="fa fa-search"></i></a>
     <div class="search-bar d-none">
       <%= render partial: 'searches/search', locals: { users: @users, beans: @beans, stores: @stores } %>
     </div>
   </span>
+</div>
+
+<div class="mb-5">
+  <h2 class="text-center"><%= @user.name %></h2>
 </div>
 
 <div class="container mt-5">
@@ -36,7 +40,7 @@
           </tbody>
         </table>
       <% else %>
-        <p>ユーザーはいません</p>
+        <p class="mt-5">ユーザーはいません</p>
       <% end %>
     </div>
   </div>
