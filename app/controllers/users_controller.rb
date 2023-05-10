@@ -59,9 +59,12 @@ class UsersController < ApplicationController
   def require_admin
     redirect_to root_path, alert: "この操作は管理者のみが許可されています。" unless current_user.admin?
   end
-  
+
   def is_matching_login_user
-    
+    user = User.find(params[:id])
+    unless user.id == current_user.id || current_user.admin?
+      redirect_to users_path
+    end
   end
 
   def user_params

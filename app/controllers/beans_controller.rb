@@ -60,6 +60,7 @@ class BeansController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @bean = Bean.find(params[:id])
 
   end
@@ -109,4 +110,12 @@ class BeansController < ApplicationController
   def store_params
     params.require(:bean).permit(:store_name, :website, :phone_number, :opening_hours, :closing_hours, :address)
   end
+
+  def is_matching_login_user
+    bean = Bean.find(params[:id])
+    unless bean.id == current_user.id || current_user.admin?
+      redirect_to beans_path
+    end
+  end
+
 end
