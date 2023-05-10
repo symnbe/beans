@@ -3,7 +3,7 @@ class StoresController < ApplicationController
   before_action :require_admin, only: [:unpublish]
 
   def index
-    @stores = Store.all
+    @stores = Store.all.order(created_at: :desc)
   end
 
   def show

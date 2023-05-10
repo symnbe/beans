@@ -45,9 +45,9 @@ class BeansController < ApplicationController
 
   def index
     if current_user && current_user.admin?
-      @all_beans = Bean.all.includes(:user)
+      @all_beans = Bean.all.includes(:user).order(created_at: :desc)
     else
-      @all_beans = Bean.public_data_includes_user_publish
+      @all_beans = Bean.public_data_includes_user_publish.order(created_at: :desc)
     end
   end
 
