@@ -7,7 +7,7 @@
 <div class="container">
   <h2 class="text-center mt-5 mb-5">Favorited</h2>
   <div class="row">
-    <% if @favorite_beans  %>
+    <% if @favorite_beans.any?  %>
       <% @favorite_beans.each do |bean| %>
         <div class="col-12 col-md-6 my-3 d-flex">
           <div class="card shadow-sm flex-grow-1">

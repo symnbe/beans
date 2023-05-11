@@ -18,10 +18,8 @@
     <div class="swiper-slide">
       <%= image_tag 'najib-kalil-BKfsCuFQ5R8-unsplash.jpg', class: 'img-fluid mv' %>
     </div>
-
   </div>
 </div>
-
 <% flash.each do |key, value| %>
   <% if key == "alert" %>
     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
@@ -35,13 +33,17 @@
     </div>
   <% end %>
 <% end %>
-
 <!--ログイン・サインアップ・ゲストログイン-->
 <% if !current_user %>
   <div class="mt-5 mb-5 text-center">
     <%= link_to "Log in", new_user_session_path, class:"link-text" %>
     <%= link_to "ゲストログイン（閲覧用）", homes_guest_sign_in_path, method: :post, class: "mx-3 link-text" %>
     <%= link_to "Sign up", new_user_registration_path, class: "link-text" %>
+  </div>
+<% else %>
+  <div class="mt-5 mb-5 text-center">
+    <%= link_to "Log out(ログ アウト)", destroy_user_session_path, class: "link-text" %><br>
+    <small>※使用後 Log out をお願いいたします！ ※</small>
   </div>
 <% end %>
 
@@ -63,7 +65,6 @@
 <div class="my-5">
   <%= image_tag 'contents-visual-unsplash.jpg', class: 'mx-auto mb-5 d-flex justify-content-center contents-img img-fluid' %>
 </div>
-
 <!--最新投稿記事を表示-->
 <div class="container">
   <h2 class="mx-auto d-flex justify-content-center new-topic">New Topic</h2>
@@ -75,11 +76,8 @@
         <% end %>
       </div>
     <% end %>
-
 <% if !current_user %>
   </div>
     <p class="mx-auto d-flex justify-content-center"><%= link_to "Come on, join us ！", new_user_registration_path, class: "start"  %></p>
   </div>
 <% end %>
-
-

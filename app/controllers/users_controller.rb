@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = User.released.order(created_at: :desc)
+      @users = User.released
     else
-      @users = User.released.where.not(id: current_user.id).order(created_at: :desc)
+      @users = User.released.where.not(id: current_user.id)
     end
   end
 
@@ -51,6 +51,13 @@ class UsersController < ApplicationController
     redirect_to user_admin_path, notice: "このアカウントは非公開状態です。"
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.joins(:user, :bean).where(user: {id: @user.id, status: "released"}).order(created_at: :desc).pluck(:bean_id)
+    @favorite_beans = Bean.find(favorites)
+  end
+
+
   private
   def check_admin
     redirect_to root_path, alert: "警告！！先ほどのページへのアクセスを禁止しています！！！（You are not authorized to access this page.）" unless current_user.admin?
@@ -58,13 +65,6 @@ class UsersController < ApplicationController
 
   def require_admin
     redirect_to root_path, alert: "この操作は管理者のみが許可されています。" unless current_user.admin?
-  end
-
-  def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id || current_user.admin?
-      redirect_to users_path
-    end
   end
 
   def user_params
