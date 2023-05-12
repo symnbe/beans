@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = User.released
+      @users = User.released.order(created_at: :desc)
     else
-      @users = User.released.where.not(id: current_user.id)
+      @users = User.released.where.not(id: current_user.id).order(created_at: :desc)
     end
   end
 
