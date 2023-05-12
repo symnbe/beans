@@ -113,7 +113,7 @@ class BeansController < ApplicationController
 
   def is_matching_login_user
     bean = Bean.find(params[:id])
-    unless bean.id == current_user.id || current_user.admin?
+    unless bean.user.id == current_user.id || current_user.admin?
       redirect_to beans_path
     end
   end

@@ -26,7 +26,7 @@
     <strong>営業時間</strong>:&ensp;<%= @store.opening_hours %> ~ <%= @store.closing_hours %>
   </div>
   <div class="row">
-    <% @store.beans.each do |bean| %>
+    <% @store_beans.each do |bean| %>
       <div class="col-12 col-md-4 m-0 my-2">
         <%= link_to bean_path(bean.id) do %>
           <%= image_tag bean.get_bean_image, class: "s-show-img-trimmimg img-fluid" %>

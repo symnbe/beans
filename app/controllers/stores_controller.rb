@@ -8,6 +8,7 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @store_beans = @store.beans.public_data_includes_user_publish.order(created_at: :desc)
 
   # Google Mapを表示するためのJavaScriptを生成
     @map_options = {
