@@ -47,6 +47,7 @@
           <% end %>
         </div>
         <!--下記コメント欄-->
+        
         <% if current_user.released? || current_user.admin? %>
           <div class="col-12 mt-3">
             <% @bean.comments.each do |comment| %>

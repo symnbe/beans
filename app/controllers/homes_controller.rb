@@ -20,7 +20,7 @@ class HomesController < ApplicationController
 
   def top
     # new topicで公開設定されている新規投稿4件を表示する
-   @beans = Bean.where(publish_status: "released")
+  # @beans = Bean.where(publish_status: "released")
    @beans = Bean.public_data_includes_user_publish.order(created_at: :desc).limit(4)
   end
 
