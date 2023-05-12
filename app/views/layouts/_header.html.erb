@@ -3,7 +3,7 @@
   <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
     <ul>
         <% if user_signed_in? %>
-          <% if current_user.released %>
+          <% if current_user.released? %>
             <li>
               <%= link_to "Favorites beans", favorites_user_path(current_user.id) %>
             </li>
