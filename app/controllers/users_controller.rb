@@ -52,16 +52,12 @@ class UsersController < ApplicationController
     redirect_to user_admin_path, notice: "このアカウントは非公開状態です。"
   end
 
- def favorites
-  if current_user.admin?
-    favorites = Favorite.joins(:user, :bean).where(user: {status: "released"}).order(created_at: :desc).pluck(:bean_id)
-  else
+  def favorites
     @user = User.find(params[:id])
     favorites = Favorite.joins(:user, :bean).where(user: {id: @user.id, status: "released"}).order(created_at: :desc).pluck(:bean_id)
+    @favorite_beans = Bean.find(favorites)
   end
-  @favorite_beans = Bean.find(favorites)
-end
-
+  
 
 
   private
