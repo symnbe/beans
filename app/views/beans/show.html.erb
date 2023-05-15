@@ -42,7 +42,7 @@
         
         <% if current_user.released? || current_user.admin? %>
           <div class="col-12 mt-3">
-            <% @bean.comments.each do |comment| %>
+            <% @bean_comments.each do |comment| %>
               <p>
                 <%= comment.user.name %>&emsp;<small><%= formatted_time_ago(comment.created_at) %></small><br>
                 <%= comment.comment %>

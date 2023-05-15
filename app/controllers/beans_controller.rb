@@ -57,6 +57,7 @@ class BeansController < ApplicationController
     @bean = Bean.find(params[:id])
     @store = @bean.store
     @comment = Comment.new
+    @bean_comments = @bean.comments.order(created_at: :desc).limit(4)
   end
 
   def edit
