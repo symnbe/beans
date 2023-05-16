@@ -39,7 +39,7 @@
           <%= render 'favorites/favorite', bean: @bean %>
         </div>
         <!--下記コメント欄-->
-        
+
         <% if current_user.released? || current_user.admin? %>
           <div class="col-12 mt-3">
             <% @bean_comments.each do |comment| %>
@@ -53,7 +53,8 @@
                 <% end %>
                </p>
             <% end %>
-
+          </div>
+          <div class="col-12">
             <%= form_with model: [@bean, @comment] do |f| %>
 
               <hr>
