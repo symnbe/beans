@@ -15,12 +15,11 @@ class Bean < ApplicationRecord
 
   enum degree_of_roasting: { light_roast: 0, cinnamon_roast: 1, medium_roast: 2, high_roast: 3, city_roast: 4, fullcity_roast: 5, french_roast: 6, italian_roast: 7}
 
-  def get_bean_image# [width, height]
+  def get_bean_image
     unless bean_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_bean_bunsplash.jpg')
       bean_image.attach(io: File.open(file_path), filename: 'no_image_unsplash.jpg', content_type: 'image/jpeg')
     end
-    # bean_image.variant(resize_to_limit:[width, height]).processed
       bean_image
   end
 
@@ -30,8 +29,5 @@ class Bean < ApplicationRecord
 
  enum publish_status: {nonreleased: 0, released: 1}
 
-  def published?
-    publish_status == 'released'
-  end
 
 end
