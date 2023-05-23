@@ -44,13 +44,11 @@ ActiveRecord::Schema.define(version: 2023_04_24_031610) do
     t.string "bean_name"
     t.text "opinion"
     t.integer "degree_of_roasting"
-    t.string "price"
     t.integer "user_id", null: false
     t.integer "production_area_id", null: false
     t.integer "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "publish_status", limit: 1, default: 1, null: false
   end
 
   create_table "comments", force: :cascade do |t|
