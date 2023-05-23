@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
 
          validates:name, presence:true
+         
 # 以下active storageで使用するメソッドを記載
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -29,14 +30,6 @@ class User < ApplicationRecord
     beans.count
   end
 # 以下フォロー機能で使用するメソッドを記載
-
-  def followable_by?(user)
-    self != user && released?
-  end
-
-  def followed_by?(user)
-    user.following?(self) && released?
-  end
 
   def follow(user)
     relationships.find_or_create_by(followed_id: user.id)
