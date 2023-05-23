@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_031610) do
     t.integer "user_id", null: false
     t.integer "production_area_id", null: false
     t.integer "store_id", null: false
+    t.integer "publish_status", limit: 1, default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
