@@ -58,10 +58,6 @@ gem 'devise'
 
 gem 'enum_help'
 
-gem 'faker'
-
-
-
 gem 'gmaps4rails'
 gem 'geocoder'
 
